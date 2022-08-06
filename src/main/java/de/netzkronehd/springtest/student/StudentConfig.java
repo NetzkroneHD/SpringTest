@@ -7,13 +7,23 @@ import org.springframework.context.annotation.Configuration;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 @Configuration
 public class StudentConfig {
 
+    private final Logger logger;
+
+    public StudentConfig() {
+        logger = Logger.getLogger(getClass().getName());
+
+    }
+
     @Bean
     CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
         return args -> {
+            final long before = System.currentTimeMillis();
+
             Student daniel = new Student(
                     "Daniel",
                     "daniel@gmail.com",
@@ -27,6 +37,7 @@ public class StudentConfig {
             );
 
             studentRepository.saveAll(Arrays.asList(daniel, jonas));
+            logger.info("Finished loading Students after "+((System.currentTimeMillis()-before)/1000)+"ms");
 
         };
     }

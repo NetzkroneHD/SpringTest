@@ -20,8 +20,7 @@ public class Student {
     private String name, email;
     private LocalDate birthday;
 
-    public Student() {
-    }
+    public Student() {}
 
     public Student(Long id, String name, String email, LocalDate birthday) {
         this.id = id;

@@ -21,6 +21,26 @@ public class StudentController {
         return studentService.getStudents();
     }
 
+    @GetMapping(path = "{studentId}")
+    public Student getStudent(@PathVariable("studentId") Long id) {
+        return studentService.getStudent(id);
+    }
+
+    @GetMapping(path = "age")
+    public double getAverageAge() {
+        return studentService.getAverageAge();
+    }
+
+    @GetMapping(path = "highest")
+    public Student getHighestAge() {
+        return studentService.getHighestAge();
+    }
+
+    @GetMapping(path = "lowest")
+    public Student getLowestAge() {
+        return studentService.getLowestAge();
+    }
+
     @PostMapping
     public void registerStudent(@RequestBody Student student) {
         studentService.addNewStudent(student);
