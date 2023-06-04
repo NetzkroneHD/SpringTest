@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Title
+  description: Title
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /einstellung/{id}:
+    get:
+      tags:
+        - einstellung
+      responses:
+        200:
+          description: Einstellungen geladen
+      parameters:
+        - name: id
+          description: ID des Mitarbeiters
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+    delete:
+      tags:
+        - einstellung
+      responses:
+        200:
+          description: Einstellung wurde gelöscht
+
+components:
+  schemas:
+    Einstellung:
+      type: object
+      required:
+        - mitarbeiterId
+        - einstellung
+        - wert
+      properties:
+        mitarbeiterId:
+          type: integer
+          format: int32
+        einstellung:
+          type: string
+          format: plane
+        wert:
+          type: string
+          format: plane
+    NewEinstellung:
+      type: array
+      oneOf:
+        - $ref: "#/components/schemas/Einstellung"

@@ -9,6 +9,8 @@ import java.util.List;
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
 
+//    API Layer
+
     private final StudentService studentService;
 
     @Autowired
